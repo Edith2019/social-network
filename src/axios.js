@@ -1,0 +1,9 @@
+import axios from 'axios';
+
+const copy = axios.create({
+
+    xsrfCookieName: 'mytoken',
+    xsrfHeaderName: 'csrf-token'
+});
+
+export default copy;

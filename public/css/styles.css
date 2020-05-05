@@ -1,0 +1,735 @@
+* {
+    background-color: white;
+    font-family: sans-serif;
+    margin: 0px;
+    outline: none;
+}
+
+img {
+    object-fit: cover;
+}
+
+/* ///////welcome page //////// */
+
+.welcome-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 80%;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    margin-right: 15%;
+    height: 80%;
+    margin-top: 5%;
+}
+
+.inputReg {
+    width: 290px;
+    height: 330px;
+    text-align: center;
+}
+
+input {
+    width: 250px;
+    height: 40px;
+    margin-top: 25px;
+    border: none;
+    border-bottom: purple solid 1px;
+    font-size: 15px;
+    background-color: rgba(243, 197, 239, 0.815);
+    padding: 5px;
+}
+
+.linksReg {
+    margin: 0px;
+    padding: 0px;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: purple solid 1px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    color: purple;
+}
+
+button:hover {
+    background: purple;
+    color: white;
+    transition: 0.5s;
+}
+
+.imgWelcome {
+    width: auto;
+    height: 95vh;
+}
+
+.titleWelcome {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.linksReg {
+    margin-top: 20px;
+    width: 290px;
+    padding: 0px;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.loginmarg {
+    margin-right: 10px;
+}
+
+.resetpwlogin {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.login {
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.buttonLogin {
+    margin: 60px;
+}
+.resetPWinput {
+    margin-bottom: 20px;
+}
+
+.textResetPw {
+    font-size: 15px;
+}
+
+.textResetPwsucc {
+    margin-bottom: 40px;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+.main {
+    height: 100vh;
+    width: auto;
+}
+
+/* /////////// header ////////// */
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    text-align: center;
+    border-bottom: solid 1px plum;
+    padding: 15px;
+    padding-bottom: 20px;
+    background-color: purple;
+    z-index: 30;
+    align-items: center;
+}
+
+.linkprofile {
+    background: none;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    border-bottom: 2px solid rebeccapurple;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.linkprofile:hover {
+    border-bottom: white 2px solid;
+    transition: 0.5;
+}
+
+/* //////profile //////// */
+
+.profile-page {
+    width: 100%;
+    height: 100vh;
+    background-image: url(/Logo3.png);
+    background-repeat: no-repeat;
+    background-position: right -350px top -40px;
+    background-size: 700px;
+    border: solid 0.1px purple;
+}
+
+.selfprofile {
+    border-left: 3px solid rebeccapurple;
+    border-top: 3px solid rebeccapurple;
+    margin: 100px;
+    padding-left: 40px;
+    padding-top: 20px;
+    width: 70%;
+    background: none;
+}
+.uploader {
+    width: 500px;
+    height: 300px;
+    border: black solid 1px;
+    position: absolute;
+    margin-left: 35%;
+    margin-right: 35%;
+    z-index: 999;
+    text-align: center;
+    margin-top: -50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px plum;
+    opacity: 80%;
+    background-color: rebeccapurple;
+}
+
+.inputfileuploader {
+    border: none;
+    background: none;
+    color: none;
+    border-radius: 0px;
+}
+
+.name-profile {
+    margin-left: 300px;
+    margin-top: -200px;
+
+    background: none;
+}
+
+.biography {
+    background: none;
+}
+
+.biography-done {
+    margin-top: 50px;
+    margin-left: 350px;
+    width: 50%;
+    background: none;
+}
+
+button .inputfile {
+    border: none;
+    color: none;
+    background-color: none;
+}
+
+.biobutton {
+    margin-top: 50px;
+}
+
+.bioInProgress {
+    background-color: purple;
+    color: white;
+    margin-top: -200px;
+    border: none;
+    width: 100%;
+}
+
+.biowritten {
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    color: purple;
+    border-bottom: purple solid 1px;
+    background: none;
+}
+
+.overviewPro {
+    margin-top: 100px;
+    padding-left: 40px;
+    background: none;
+}
+
+/* ////other profile ////// */
+
+.otherprofile-container {
+    border: solid black 2px;
+    width: 100%;
+    height: 100vh;
+    background-image: url(/Logo5.png);
+    background-repeat: no-repeat;
+    background-position: right -350px top -40px;
+    background-size: 700px;
+    border: solid 0.1px purple;
+    padding-bottom: 40px;
+}
+
+.otherprofile {
+    padding-top: 20px;
+    width: 300px;
+    height: 500px;
+    background-color: rebeccapurple;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border: solid 2px black;
+}
+
+.profileCard {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 500px;
+    background: none;
+}
+.titleOtherPro {
+    background-color: rebeccapurple;
+    color: white;
+    padding: 20px;
+}
+
+.bioOtherPro {
+    width: 280px;
+    height: 70px;
+    background-color: purple;
+    padding: 10px;
+    color: white;
+}
+
+.friendButton {
+    width: 300px;
+}
+
+/* /////// find friends /////  */
+
+.FindProfile {
+    margin-top: 0px;
+    margin-right: 0px;
+    background-color: rebeccapurple;
+    z-index: 80;
+}
+
+.userSearch {
+    margin-bottom: 30px;
+    width: 100%;
+    height: 70px;
+    border: none;
+    border-bottom: purple 3px solid;
+    border-radius: 0px;
+    background-color: rebeccapurple;
+    padding: 10px;
+    font-size: 30px;
+    outline: none;
+    margin-right: 0px;
+    color: White;
+    margin-left: 00px;
+    margin-top: 0px;
+    z-index: 90;
+    position: absolute;
+}
+
+.searchUsersList {
+    border: purple 2px solid;
+    border-bottom: purple solid 5px;
+    border-left: purple solid 5px;
+    padding: 10px;
+    width: 300px;
+    height: 140px;
+    margin: 20px;
+}
+
+.searchUsersList:hover {
+    background-color: rebeccapurple;
+    opacity: 0.7;
+    transition: 0.8s;
+}
+
+.nameUserSearch {
+    margin-left: 150px;
+    margin-top: -80px;
+    background: none;
+}
+
+.allusers {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding-top: 150px;
+    height: 100vh;
+    padding-left: 50px;
+    background-image: url(/Logo4.png);
+    background-repeat: no-repeat;
+    background-position: right -300px top -40px;
+    background-size: 700px;
+    border: solid 0.1px purple;
+    padding-bottom: 40px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    background-color: purple;
+    margin-top: 20px;
+    z-index: 15;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
+#logout {
+    background-color: none;
+    color: white;
+    border: solid 1 px black;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 2.5rem;
+    background-color: purple;
+}
+
+.linksfriends {
+    background-color: purple;
+}
+
+.linkFindFriends {
+    margin-right: 10px;
+    background-color: purple;
+    background: none;
+    color: white;
+    width: 100px;
+}
+
+.friendsreqcur {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    /* background-image: url(/Logo6.png); */
+    height: 90vh;
+}
+
+.friendsreqcurCard {
+    width: 150px;
+    height: 250px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: purple;
+}
+
+.allFriendsFalse {
+    border-top: solid purple 2px;
+    border-right: solid purple 2px;
+    margin-left: 5%;
+    margin-bottom: 10%;
+    width: 35%;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    padding-left: 50px;
+    padding-bottom: 40px;
+    margin-bottom: 100px;
+}
+
+.allFriendsAcc {
+    border-bottom: solid purple 2px;
+    border-left: solid purple 2px;
+    margin-right: 10%;
+    width: 35%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding-left: 50px;
+    padding-bottom: 40px;
+    margin-bottom: 100px;
+}
+
+.titleFalse {
+    margin-right: 30%;
+    margin-left: 30%;
+    margin-top: 30px;
+    margin-bottom: 70px;
+    height: 40px;
+}
+
+.titleAcc {
+    margin-right: 30%;
+    margin-left: 30%;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.friendsreqcurCardFalse {
+    border: solid 2px rebeccapurple;
+
+    width: 150px;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.afriends {
+    background: none;
+    color: white;
+}
+
+.bfriends {
+    color: rebeccapurple;
+}
+
+.imgprofileBigRight {
+    height: 90vh;
+    width: 200px;
+    z-index: 4;
+    margin-left: 85%;
+    position: absolute;
+    overflow: hidden;
+    object-position: 0% 0%;
+}
+
+.imgprofileBigLeft {
+    height: 90vh;
+    width: 500px;
+    z-index: 4;
+    margin-left: 0%;
+    /* position: absolute; */
+    overflow: hidden;
+    object-position: 0% 0%;
+    margin-top: -700px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.imgprofileSMallFriendsLeft {
+    background-image: url(/Logo6.png);
+    width: 300px;
+    object-position: 40% 40%;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.imgprofileSMallFriendsRight {
+    background-image: url(/Logo7.png);
+    width: 300px;
+    object-position: 40% 40%;
+}
+
+.Chatborder {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 440px;
+    width: 45%;
+    border: 10px solid purple;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.chatmessagesContainer {
+    height: 400px;
+    overflow-y: scroll;
+    width: 90%;
+    border: 20px solid white;
+    margin-right: 5px;
+    z-index: 60;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    background-image: url(/Logo9.png);
+    padding-bottom: 50px;
+}
+
+.chatTitle {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    background: none;
+    color: rgb(69, 10, 69);
+    font-size: 55px;
+    font: bold;
+
+    padding: 5px;
+}
+
+.boxChat {
+    padding-left: 110px;
+    padding-top: 40px;
+    margin: 10px;
+}
+
+.messageTitle {
+    margin-left: 100px;
+    margin-top: -100px;
+}
+
+.nameChat {
+    margin-top: 15px;
+}
+
+.messageChat {
+    margin-bottom: 25px;
+}
+
+.messageChat {
+    margin-top: 10px;
+    margin-right: 50px;
+    border: purple solid 1px;
+    padding: 15px;
+    width: 300px;
+    height: auto;
+    background-color: rgba(243, 197, 239, 0.815);
+    border-radius: 10px;
+    min-height: 50px;
+    font: 15px;
+}
+
+.imageChat {
+    border-radius: 5px;
+    border: purple 2px solid;
+}
+
+.BorderChat {
+    margin: green 4px solid;
+}
+
+.textAreaChat {
+    border: 5px solid purple;
+    border-radius: 20px;
+    background-color: rgba(243, 197, 239, 0.815);
+    font-size: 25px;
+    padding: 20px;
+    width: 28%;
+    height: 150px;
+    margin-bottom: 10%;
+}
+
+.hreftoPrivateMsg {
+    background: none;
+    margin: none;
+    padding: none;
+}
+
+.OnlineUsers {
+    border: purple solid 2px;
+    padding: 20px;
+    margin: 20px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200px;
+}
+
+.Green {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.NewUserOnline {
+    border: purple solid 2px;
+    padding: 20px;
+    margin: 20px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 200px;
+}
+
+.OnlineCommunity {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.linktosupport {
+    background: none;
+    font-style: bold;
+    margin: 3px;
+    text-decoration: none;
+    color: black;
+}
+.linktosupport:hover {
+    font-style: bold;
+}
+
+.nameChat {
+    background: none;
+}
+.boxPChat {
+    padding-top: 50px;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    background: none;
+}
+.imagePChat {
+    margin: 2px;
+    background: none;
+    border-radius: 5px;
+    border: purple 4px solid;
+}
+
+.privateChatTitle {
+    margin-top: 10%;
+    margin-left: 0%;
+    width: 100%;
+    margin-top: 0px;
+    background: none;
+    border: solid 1 px black;
+}
+
+.Key {
+    background: none;
+}
+
+.chat {
+    padding: 50px;
+}
+
+.chatP {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    background-image: url(/Logo10.png);
+    padding-bottom: 50px;
+}
+
+.privatechatFriend {
+    background: none;
+    font-style: bold;
+    margin: 3px;
+    text-decoration: none;
+    color: white;
+}
+.privatechatFriend:hover {
+    cursor: pointer;
+}
