@@ -30,6 +30,8 @@ export default function reducer(state = {}, action) {
                     return {
                         friendsWannabe
                     };
+                } else {
+                    return "There is an issue, we are looking at it";
                 }
             })
         };
@@ -43,6 +45,8 @@ export default function reducer(state = {}, action) {
                     return {
                         friendsWannabe
                     };
+                } else {
+                    return "There is an issue, we are looking at it";
                 }
             })
         };

@@ -80,13 +80,13 @@ export default class App extends React.Component {
             <React.Fragment>
                 <BrowserRouter>
                     <div className="profile">
-                        <a className="logoref" href="https://swork-berlin.herokuapp.com/welcome#/">
+                        <a className="logoref" href="http://localhost:8080/welcome#/">
                             <img src="/Logo.png" className="logo" alt="logo" width="100px" height="100px" />
                         </a>
-                        <a className="linkprofile" href="https://swork-berlin.herokuapp.com/users">Find Friends</a>
-                        <a className="linkprofile" href="https://swork-berlin.herokuapp.com/friends">My Friends</a>
-                        <a className="linkprofile" href="https://swork-berlin.herokuapp.com/chat">Chat</a>
-                        <a className="linkprofile" href="https://swork-berlin.herokuapp.com/online"> Online</a>
+                        <a className="linkprofile" href="http://localhost:8080/users">Find Friends</a>
+                        <a className="linkprofile" href="http://localhost:8080/friends">My Friends</a>
+                        <a className="linkprofile" href="http://localhost:8080/chat">Chat</a>
+                        <a className="linkprofile" href="http://localhost:8080/online"> Online</a>
                         <img onClick={() => this.toggleModal()}
                             className="imgprofile"
                             src={this.state.url}

@@ -54,8 +54,7 @@ export default function Friends() {
                             <Link className="privatechatFriend" to={{
                                 pathname: "/privatechat",
                                 state: { userid: friendsAccepted[0].id }
-                            }} useri
-                            d={friendsAccepted[0].id}> Chat </Link>
+                            }} userid={friendsAccepted[0].id}> Chat </Link>
                         </div>;
                     })}
                 </div>

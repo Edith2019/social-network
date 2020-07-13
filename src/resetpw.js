@@ -61,7 +61,12 @@ export default class Resetpw extends React.Component {
                 <div className="login">
                     {this.state.error && <div className="error">Oops</div>}
                     <p className="textResetPw"> Please enter the email you registered with !!</p>
-                    <input className="resetPWinput" input key="email" type="email" name="email" placeholder="email" onChange={e => this.handleChange(e)} />
+                    <input className="resetPWinput"
+                        input key="email"
+                        type="email"
+                        name="email"
+                        placeholder="email"
+                        onChange={e => this.handleChange(e)} />
                     <button onClick={() => this.getEmail()}> submit </button>
                 </div >
             );
@@ -70,9 +75,16 @@ export default class Resetpw extends React.Component {
                 <div className="login">
                     {this.state.error && <div className="error">Oops</div>}
                     <p className="textResetPw"> Please enter the code you received !</p>
-                    <input className="resetPWinput" key="secret-code" type="text" name="code" placeholder="code" onChange={e => this.handleChange(e)} />
+                    <input className="resetPWinput"
+                        key="secret-code"
+                        type="text" name="code"
+                        placeholder="code"
+                        onChange={e => this.handleChange(e)} />
                     <p className="textResetPw">Please enter your new password !</p>
-                    <input type="password" name="newPw" placeholder="new password" onChange={e => this.handleChange(e)} />
+                    <input type="password"
+                        name="newPw"
+                        placeholder="new password"
+                        onChange={e => this.handleChange(e)} />
                     <button onClick={() => this.getCode()}> submit </button>
                 </div>
             );

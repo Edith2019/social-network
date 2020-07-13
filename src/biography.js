@@ -58,7 +58,12 @@ export default class Biography extends React.Component {
         } else if (this.state.bioEditorIsVisible == true) {
             return <div className="biography">
                 {this.state.error && <div className="error">Oops</div>}
-                <textarea className="bioInProgress" id="bioTextArea" name="bioInProgress" rows="5" cols="90" onChange={e => this.handleChange(e)}></textarea>
+                <textarea className="bioInProgress"
+                    id="bioTextArea"
+                    name="bioInProgress"
+                    rows="5"
+                    cols="90"
+                    onChange={e => this.handleChange(e)}></textarea>
                 <button className="biobutton" onClick={() => this.submit()}>save</button>
             </div >;
         } else if (this.props.biography && this.state.bioEditorIsVisible === false) {

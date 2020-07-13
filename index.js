@@ -22,7 +22,6 @@ const conf = require("./config");
 
 let secrets;
 if (process.env.SESSION_SECRET) {
-
     secrets = {
         cookieSession: {
             secret: process.env.SESSION_SECRET
@@ -94,28 +93,14 @@ app.post("/register", (req, res) => {
     const { first, last, email, pw } = req.body;
     hash(pw)
         .then(hPWresult => {
-            db.addHashed(first, last, email, hPWresult )
-                .then(result => {
-                    req.session.profile = {};
-                    req.session.userId = result.rows[0].id;
-                    req.session.first = result.rows[0].first;
-                    req.session.last = result.rows[0].last;
-                    req.session.email = result.rows[0].email;
-                    req.session.password = result.rows[0].password;
-                    res.json({
-                        success: true
-                    });
-                }).catch(err => {
-                    console.error("error in post register", err);
-                    res.json({
-                        error: true
-                    });
-                });
-        }).catch(err => {
+            return db.addHashed(first, last, email, hPWresult);
+        }).then(result => {
+            req.session.userId = result.rows[0].id;
+            res.json({ success: true });
+        })
+        .catch(err => {
             console.error("error in post register", err);
-            res.json({
-                error: true
-            });
+            res.json({ error: true });
         });
 });
 
@@ -123,30 +108,29 @@ app.post("/register", (req, res) => {
 app.post("/login", (req, res) => {
     const emailLog = req.body.email;
     const pwLog = req.body.pw;
-    db.getHashed(emailLog).then(result => {
-        const hashedPw = result.rows[0].password;
-        compare(pwLog, hashedPw).then(response => {
-            if (response === true) {
-                req.session.userId = result.rows[0].id;
-                req.session.first = result.rows[0].first;
-                req.session.last = result.rows[0].last;
-            }
-            res.json({
-                success: true
+    db.getHashed(emailLog)
+        .then(result => {
+            const hashedPw = result.rows[0].password;
+            compare(pwLog, hashedPw
+            ).then(response => {
+                if (response === true) {
+                    req.session.userId = result.rows[0].id;
+                }
+                res.json({
+                    success: true
+                });
+            }).catch(err => {
+                console.error("error in returning pw from compare", err);
+                res.json({
+                    error: true
+                });
             });
         }).catch(err => {
-            console.error("error in returning pw from compare", err);
+            console.error("error in gethashed", err);
             res.json({
                 error: true
             });
         });
-    }).catch(err => {
-        console.error("error in gethashed", err);
-        res.json({
-            error: true
-        });
-
-    });
 });
 
 // route to identfy user  is logged in. If no user ID //

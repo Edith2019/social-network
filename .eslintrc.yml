@@ -1,0 +1,125 @@
+env:
+    browser: true
+    es6: true
+    node: true
+    jest: true
+    codeceptjs/codeceptjs: true
+extends:
+    - eslint:recommended
+    - plugin:react/recommended
+    - plugin:codeceptjs/recommended
+    - plugin:import/react
+    - plugin:import/errors
+    - plugin:import/warnings
+globals:
+    Atomics: readonly
+    SharedArrayBuffer: readonly
+parser: babel-eslint
+parserOptions:
+    ecmaFeatures:
+        jsx: true
+    ecmaVersion: 2018
+    sourceType: module
+settings:
+    import/resolver:
+        node:
+            extensions: [".js", ".jsx", ".mjs", ".json"]
+    react:
+        version: detect
+plugins:
+    - react
+    - jest
+    - codeceptjs
+    - html
+rules:
+    # whitespace: 66
+    indent: [error, 4]
+    no-multi-spaces: error
+    no-multiple-empty-lines: [error, { max: 1, maxEOF: 1, maxBOF: 0 }]
+    no-trailing-spaces: error
+    space-in-parens: error
+    array-bracket-spacing: [error, never]
+    object-curly-spacing: [error, always]
+    block-spacing: error
+    comma-spacing: [error, { before: false, after: true }]
+    key-spacing: error
+    keyword-spacing: error
+    space-before-blocks: [error, always]
+    space-infix-ops: error
+    spaced-comment: [error, always, { exceptions: ["-", "="] }]
+    no-spaced-func: error
+    space-before-function-paren:
+        [error, { named: never, anonymous: always, asyncArrow: always }]
+    arrow-spacing: [error, { before: true, after: true }]
+    react/jsx-tag-spacing: error
+    react/jsx-curly-spacing: [error, { when: never, children: true }]
+    # punctuation:
+    semi: [error, always]
+    quotes: [error, double]
+    comma-dangle: [error, never]
+    no-template-curly-in-string: error
+    no-extra-parens: error
+    jsx-quotes: [error, prefer-double]
+    # possible errors: 9
+    require-atomic-updates: error
+    react/no-unescaped-entities: error
+    no-unused-vars: error
+    # best practices: 16
+    no-console: [error, { allow: [warn, error] }]
+    no-warning-comments: error
+    array-callback-return: error
+    no-return-await: error
+    require-await: error
+    no-self-compare: error
+    no-sequences: error
+    no-throw-literal: error
+    prefer-promise-reject-errors: error
+    prefer-regex-literals: error
+    camelcase: [error, allow: [en_US, de_DE]]
+    func-style: error
+    no-bitwise: error
+    no-multi-assign: error
+    no-negated-condition: error
+    no-duplicate-imports: error
+    prefer-rest-params: error
+    prefer-spread: error
+    jest/no-disabled-tests: error
+    jest/no-focused-tests: error
+    react/prop-types: error
+    # complexity: 53
+    # max-lines: [error, 100]
+    max-lines-per-function: [error, 20]
+    max-len: [error, { code: 130, tabWidth: 2 }] # 49
+    max-statements: [error, 10]
+    max-statements-per-line: [error, { max: 2 }]
+    max-params: [error, 3]
+    max-nested-callbacks: [error, 4]
+    max-depth: [error, 2]
+    complexity: [error, 5]
+overrides:
+    - files: ["*.test.js"]
+      rules:
+          max-lines: [error, 200]
+          max-lines-per-function: [error, 200]
+    - files: ["*.jsx", "src/components/**/*.js", "src/**/*.js"]
+      rules:
+          max-lines: [error, 150]
+          max-lines-per-function: [error, 150]
+          complexity: [error, 10]
+          no-extra-parens: off
+    - files: ["*.test.jsx", "src/components/**/*.test.js"]
+      rules:
+          max-lines: [error, 300]
+          max-lines-per-function: [error, 300]
+          no-extra-parens: off
+    - files: ["*.at.js", "at/steps.js"]
+      rules:
+          max-lines: [error, 200]
+          max-lines-per-function: [error, 50]
+          max-statements: [error, 30]
+          func-style: off
+    - files: ["tools/**/*.js"]
+      rules:
+          max-lines: [error, 200]
+          max-lines-per-function: [error, 50]
+

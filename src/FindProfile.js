@@ -51,7 +51,7 @@ export default function FindProfile() {
                 <div className="allusers">
                     {users && users.map((user) => {
                         return <div className="searchUsersList" key={user.id} >
-                            <a href={`https://swork-berlin.herokuapp.com/user/${user.id}`}>
+                            <a href={`http://localhost:8080/user/${user.id}`}>
                                 <img src={user.url_profile} width="100px" height="100px"></img>
                                 <h2 className="nameUserSearch"> {user.first} {user.last} </h2>
                             </a>

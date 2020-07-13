@@ -40,7 +40,6 @@ export default class Login extends React.Component {
                 <input type="email" name="email" placeholder="email" onChange={e => this.handleChange(e)} />
                 <input type="password" name="pw" placeholder="password" onChange={e => this.handleChange(e)} />
                 <button className="buttonLogin" onClick={() => this.submit()}> login </button>
-
                 <Link className="resetpwlogin" to="/resetpw"> reset-password</Link>
             </div >
         );

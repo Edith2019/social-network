@@ -29,10 +29,10 @@ const conf = {
 if (require.main == module) {
     webpack(conf, function (err, info) {
         if (err) {
-            console.log(err);
+            console.error(err);
         }
         if (info && info.compilation.errors.length) {
-            console.log(info.compilation.errors);
+            console.error(info.compilation.errors);
         }
     });
 } else {
