@@ -8,7 +8,7 @@ export default class Logout extends Component {
     }
 
     logout() {
-        axios.get('/logout').then(() => {
+        axios.get("/logout").then(() => {
             location.replace("/welcome#/login");
         });
     }

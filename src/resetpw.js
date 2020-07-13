@@ -1,18 +1,18 @@
-import React from 'react';
-import axios from './axios'; //need to put the slash to use the copy
-import { Link } from 'react-router-dom';
+import React from "react";
+import axios from "./axios";
+import { Link } from "react-router-dom";
 
 export default class Resetpw extends React.Component {
-    constructor(props) { //props are all the data you want to apss props
-        super(props); // add a property to the instence props
+    constructor(props) {
+        super(props);
         this.state = {
-            step: 0,
+            step: 0
         };
     }
 
     getEmail() {
-        axios.post('/password/reset/start', {
-            email: this.state.email,
+        axios.post("/password/reset/start", {
+            email: this.state.email
         }).then(
             ({ data }) => {
                 if (data.success) {
@@ -29,10 +29,10 @@ export default class Resetpw extends React.Component {
     }
 
     getCode() {
-        axios.post('/password/reset/verify', {
+        axios.post("/password/reset/verify", {
             email: this.state.email,
             code: this.state.code,
-            newPw: this.state.newPw,
+            newPw: this.state.newPw
         }).then(
             ({ data }) => {
                 if (data.success) {

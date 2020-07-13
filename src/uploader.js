@@ -1,34 +1,28 @@
-import React from 'react';
-import axios from './axios';
-
+import React from "react";
+import axios from "./axios";
+import PropTypes from "prop-types";
 
 export default class Uploader extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            url: '',
-            name: '',
-            last: '',
-            id: '',
-            closeModal: ''
+            url: "",
+            name: "",
+            last: "",
+            id: "",
+            closeModal: ""
         };
     }
 
-    componentDidMount() {
-        console.log("uploader mounted");
-    }
-
     uploadeImage() {
-        //sending image to the server
         var formData = new FormData();
-        formData.append('file', this.state.url);
-        formData.append('id', this.state.id);
-        axios.post('/upload/image', formData, {
+        formData.append("file", this.state.url);
+        formData.append("id", this.state.id);
+        axios.post("/upload/image", formData, {
         }).then(
             ({ data }) => {
                 if (data) {
-                    // console.log("to post route image");
                     const url = data.url_profile;
                     this.props.closeModal(url);
                 } else {
@@ -36,7 +30,6 @@ export default class Uploader extends React.Component {
                         error: true
                     });
                 }
-                ////////// CHECK FOR ERROR //////
             });
     }
 
@@ -47,14 +40,21 @@ export default class Uploader extends React.Component {
     }
 
     render() {
-        console.log("this.props", this.props);
         return (
             <React.Fragment>
                 <div className="uploader">
-                    <input name="url" type="file" accept="image/*" className="inputfileuploader" onChange={e => this.handleChange(e)} />
+                    <input name="url"
+                        type="file"
+                        accept="image/*"
+                        className="inputfileuploader"
+                        onChange={e => this.handleChange(e)} />
                     <button onClick={() => this.uploadeImage()}> Upload </button>
                 </div>
             </React.Fragment>
         );
     }
 }
+
+Uploader.propTypes = {
+    closeModal: PropTypes.func
+};

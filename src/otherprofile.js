@@ -1,31 +1,30 @@
-import React from 'react';
-import axios from './axios';
-import FriendButton from './friendbutton';
+import React from "react";
+import axios from "./axios";
+import FriendButton from "./friendbutton";
+import PropTypes from "prop-types";
 
 export default class OtherProfile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
-            otherUserId: '',
+            id: "",
+            otherUserId: ""
         };
     }
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        // console.log("id in the compoenent mounted otherprofile", id);
         axios.get(`/user/${id}.json`).then(
             data => {
-                // console.log("data in res ", data);
                 if (data.data.redirect) {
-                    this.props.history.push('/');
+                    this.props.history.push("/");
                 } else {
                     this.setState({
                         first: data.data.data.first,
                         last: data.data.data.last,
                         biography: data.data.data.biography,
                         url: data.data.data.url_profile,
-                        currenturl: data.data.data.url_profile,
+                        currenturl: data.data.data.url_profile
                     });
                 }
             }
@@ -49,3 +48,10 @@ export default class OtherProfile extends React.Component {
         );
     }
 }
+
+OtherProfile.propTypes = {
+    match: PropTypes.object,
+    params: PropTypes.string,
+    id: PropTypes.string,
+    history: PropTypes.object
+};

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { receiveFriendsWannaBe, acceptFriendRequest, declineFriendRequest, deleteFriendRequest } from './actions';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { receiveFriendsWannaBe, acceptFriendRequest, declineFriendRequest, deleteFriendRequest } from "./actions";
 
 export default function Friends() {
     const dispatch = useDispatch();
@@ -10,13 +10,11 @@ export default function Friends() {
             friendsWannabe => friendsWannabe.accepted == true
         )
     );
-    console.log("friendsAccepted", friendsAccepted);
     const friendsWannaBeFalse = useSelector(
         state => state.friendsWannabes && state.friendsWannabes.filter(
             friendsWannabe => friendsWannabe.accepted == false
         )
     );
-    // console.log("friendsWannaBeFalse", friendsWannaBeFalse);
 
     useEffect(() => {
         dispatch(receiveFriendsWannaBe());
@@ -30,32 +28,35 @@ export default function Friends() {
                 <div className="allFriendsFalse">
                     <h1 className="titleFalse">Friends pending</h1>
                     {friendsWannaBeFalse && friendsWannaBeFalse.map(friendsFalse => {
-                        return (<div className="friendsreqcurCardFalse" key={friendsFalse.id}>
-                            <a href={`https://swork-berlin.herokuapp.com/user/${friendsWannaBeFalse[0].id}`}>
+                        return <div className="friendsreqcurCardFalse" key={friendsFalse.id}>
+                            <a href={`http://localhost:8080/user/${friendsWannaBeFalse[0].id}`}>
                                 <img width="100px" height="100px" src={friendsFalse.url_profile}></img>
                                 <h2 className="bfriends">{friendsFalse.first} {friendsFalse.last}</h2>
                             </a>
                             <div className="buttonAccNo">
-                                <button onClick={() => dispatch(acceptFriendRequest(friendsFalse.id))}> Accept Friend Request </button>
+                                <button onClick={() => dispatch(acceptFriendRequest(friendsFalse.id))}>
+                                Accept Friend Request </button>
                                 <button onClick={() => dispatch(deleteFriendRequest(friendsFalse.id))}> Nop </button>
                             </div>
-                        </div>);
+                        </div>;
                     })}
                 </div>
                 <div className="allFriendsAcc">
                     <h1 className="titleAcc"> Your Friends</h1>
                     {friendsAccepted && friendsAccepted.map(friendsAcc => {
-                        return (<div className="friendsreqcurCard" key={friendsAcc.id}>
-                            <a className="afriends" href={`https://swork-berlin.herokuapp.com/user/${friendsAccepted[0].id}`}>
+                        return <div className="friendsreqcurCard" key={friendsAcc.id}>
+                            <a className="afriends" href={`http://localhost:8080/user/${friendsAccepted[0].id}`}>
                                 <img width="100px" height="100px" src={friendsAcc.url_profile}></img>
                                 <h2 className="afriends">{friendsAcc.first} {friendsAcc.last}</h2>
                             </a>
-                            <button className="UnfriendAcc" onClick={() => dispatch(declineFriendRequest(friendsAcc.id))}> Unfriend </button>
+                            <button className="UnfriendAcc" onClick={() => dispatch(declineFriendRequest(friendsAcc.id))}>
+                            Unfriend </button>
                             <Link className="privatechatFriend" to={{
                                 pathname: "/privatechat",
-                                state: { userId: friendsAccepted[0].id }
-                            }} userId={friendsAccepted[0].id}> Chat </Link>
-                        </div>);
+                                state: { userid: friendsAccepted[0].id }
+                            }} useri
+                            d={friendsAccepted[0].id}> Chat </Link>
+                        </div>;
                     })}
                 </div>
                 <div className="imgprofileSMallFriendsRight">
@@ -63,8 +64,4 @@ export default function Friends() {
             </div>
         </React.Fragment >
     );
-
-
-
-
 }

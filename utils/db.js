@@ -1,18 +1,17 @@
 const spicedPg = require("spiced-pg");
-const bcrypt = require('bcryptjs');
-let { genSalt, hash, compare } = bcrypt; //those function are asynchronus
-const { promisify } = require('util');
+const bcrypt = require("bcryptjs");
+let { genSalt, hash, compare } = bcrypt; // those function are asynchronus
+const { promisify } = require("util");
 genSalt = promisify(genSalt);
 hash = promisify(hash);
 compare = promisify(compare);
-
 
 let db;
 let secrets;
 if (process.env.DATABASE_URL) {
     db = spicedPg(process.env.DATABASE_URL);
 } else {
-    secrets = require('./secrets');
+    secrets = require("./secrets");
     db = spicedPg(`postgres:${secrets.users.user}:${secrets.users.pwreg}@localhost:5432/profiles`);
 
 }
@@ -31,12 +30,12 @@ module.exports.addHashed = (first, last, email, hPWresult) => {
     return db.query(q, params);
 };
 
-module.exports.getHashed = (emailLog) => {
+module.exports.getHashed = (email) => {
     const q = `SELECT profiles.email, profiles.first, profiles.last, profiles.password, profiles.id
     FROM profiles
     WHERE email = $1
     `;
-    const params = [emailLog];
+    const params = [email];
     return db.query(q, params);
 };
 
@@ -58,25 +57,22 @@ module.exports.addCode = (secretCode, emailRes) => {
     return db.query(q, params);
 };
 
-module.exports.selectCode = (emailConf) => {
+module.exports.selectCode = (email) => {
     const q = ` 
     SELECT * FROM pw_codes
     WHERE CURRENT_TIMESTAMP - created_at < INTERVAL '10 minutes'
     AND email = $1
     ORDER BY id DESC LIMIT 1
    `;
-    const params = [emailConf];
+    const params = [email];
     return db.query(q, params);
 };
 
-
-
-
-module.exports.addNewPw = (emailConf, hPWresult) => {
+module.exports.addNewPw = (email, hPWresult) => {
     const q = ` UPDATE profiles SET password = $2
     WHERE email = $1
     `;
-    const params = [emailConf, hPWresult];
+    const params = [email, hPWresult];
     return db.query(q, params);
 };
 
@@ -122,7 +118,6 @@ module.exports.getThreeUsers = () => {
     `;
     return db.query(q);
 };
-
 
 module.exports.getProfilesMatch = (input) => {
     const q = `SELECT id, first, last, url_profile
@@ -183,7 +178,6 @@ module.exports.getFriends = (userId) => {
     return db.query(q, params);
 };
 
-
 module.exports.postAcceptFriendList = (senderId, receiverId, accepted) => {
     const q = ` 
     UPDATE friendships SET accepted = $3
@@ -193,7 +187,7 @@ module.exports.postAcceptFriendList = (senderId, receiverId, accepted) => {
     return db.query(q, params);
 };
 
-module.exports.postDeckineFriendList = (senderId, receiverId) => {
+module.exports.postDeclineFriendList = (senderId, receiverId) => {
     const q = ` DELETE FROM friendships
     WHERE (receiver_id = $1 AND sender_id = $2)
     OR (receiver_id = $2 AND sender_id = $1);
@@ -271,7 +265,6 @@ module.exports.postDeleteAccountChat = (userId) => {
     const params = [userId];
     return db.query(q, params);
 };
-
 
 module.exports.sendSocketdata = (userId) => {
     const q = ` SELECT * FROM profiles

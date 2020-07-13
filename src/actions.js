@@ -1,79 +1,93 @@
-import axios from './axios';
+import axios from "./axios";
 
-export async function receiveFriendsWannaBe() {
-    console.log("receive wanna be");
-    const { data } = await axios.get('/friends.json');
-    return {
-        type: 'RECEIVE_FRIENDS_WANNABES',
-        friendsWannabes: data,
-    };
+export function receiveFriendsWannaBe() {
+    return axios
+        .get("/friends.json")
+        .then(({ data }) => {
+            return {
+                type: "RECEIVE_FRIENDS_WANNABES",
+                friendsWannabes: data
+            };
+        });
 }
 
-export async function acceptFriendRequest(otherId) {
-    const { data } = await axios.post(`/acceptFriendRequest/${otherId}`);
-    console.log("data accept friend request", data);
-    return {
-        type: 'ACCEPT_FRIEND_REQUEST',
-        otherId
-    };
+export function acceptFriendRequest(otherId) {
+    return axios.post(`/acceptFriendRequest/${otherId}`)
+        .then(({ data }) => {
+            if (data.accepted) {
+                return {
+                    type: "ACCEPT_FRIEND_REQUEST",
+                    otherId
+                };
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
 
-export async function declineFriendRequest(otherId) {
-    const { data } = await axios.post(`/declineFriendRequest/${otherId}`);
-    console.log("data accept friend request", data);
-    return {
-        type: 'DECLINE_FRIEND_REQUEST',
-        otherId
-    };
+export function declineFriendRequest(otherId) {
+    return axios.post(`/declineFriendRequest/${otherId}`)
+        .then(({ data }) => {
+            if (data.accepted) {
+                return {
+                    type: "DECLINE_FRIEND_REQUEST",
+                    otherId
+                };
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
 
-export async function deleteFriendRequest(otherId) {
-    const { data } = await axios.post(`/deleteFriendRequest/${otherId}`);
-    // console.log("data accept friend reques deletet", data);
-    return {
-        type: 'DELETE_FRIEND_REQUEST',
-        otherId
-    };
+export function deleteFriendRequest(otherId) {
+    return axios.post(`/deleteFriendRequest/${otherId}`)
+        .then(({ data }) => {
+            if (data.accepted) {
+                return {
+                    type: "DELETE_FRIEND_REQUEST",
+                    otherId
+                };
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
 }
 
-export async function chatMessages(tenMsgs) {
-    // console.log("ten msgs in actions", tenMsgs);
+export function chatMessages(tenMsgs) {
     return {
-        type: 'TEN_MESSAGES',
+        type: "TEN_MESSAGES",
         tenMsgs
     };
 }
 
-
-export async function chatMessage(msg) {
-    // console.log("msg in action", msg);
+export function chatMessage(msg) {
     return {
-        type: 'LAST_MESSAGE',
+        type: "LAST_MESSAGE",
         msg
     };
 }
 
-export async function newUserJoined(newUser) {
-    // console.log("new User in action", newUser);
+export function newUserJoined(newUser) {
     return {
-        type: 'NEW_USER',
+        type: "NEW_USER",
         newUser
     };
 }
 
-export async function onlineUsers(otherUserOnline) {
-    // console.log("something in usersonline");
+export function onlineUsers(otherUserOnline) {
     return {
-        type: 'ONLINE',
+        type: "ONLINE",
         otherUserOnline
     };
 
 }
 
-export async function privateMessage(Pmsg) {
-    // console.log("fin action actions", Pmsg);
+export function privateMessage(Pmsg) {
     return {
-        type: 'PRIVATEMESSAGE',
+        type: "PRIVATEMESSAGE",
         Pmsg
     };
 }

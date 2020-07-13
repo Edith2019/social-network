@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 const copy = axios.create({
 
-    xsrfCookieName: 'mytoken',
-    xsrfHeaderName: 'csrf-token'
+    xsrfCookieName: "mytoken",
+    xsrfHeaderName: "csrf-token"
 });
 
 export default copy;

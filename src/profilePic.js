@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 
 export default function ProfilePic({ first, last, url }) {
-    // console.log("props in pres", first, last, url);
     url = url || "/profileimg.png";
     return (
         <React.Fragment>
@@ -12,3 +12,9 @@ export default function ProfilePic({ first, last, url }) {
         </React.Fragment >
     );
 }
+
+ProfilePic.propTypes = {
+    first: PropTypes.string,
+    last: PropTypes.string,
+    url: PropTypes.string
+};

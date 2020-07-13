@@ -1,41 +1,39 @@
-import React from 'react';
-import axios from './axios';
-import ProfilePic from './profilePic';
-import Uploader from './uploader';
-import Profile from './profile';
-import Biography from './biography';
-import { BrowserRouter, Route } from 'react-router-dom';
-import OtherProfile from './otherprofile.js';
-import FindProfile from './FindProfile.js';
-import Friends from './friends';
-import Chat from './chat';
-import PrivateChat from './privatechat';
-import Online from './onlineusers';
-import Logout from './logout';
-import DeleteAccount from './deleteaccount';
+import React from "react";
+import axios from "./axios";
+import ProfilePic from "./profilePic";
+import Uploader from "./uploader";
+import Profile from "./profile";
+import Biography from "./biography";
+import { BrowserRouter, Route } from "react-router-dom";
+import OtherProfile from "./otherprofile.js";
+import FindProfile from "./FindProfile.js";
+import Friends from "./friends";
+import Chat from "./chat";
+import PrivateChat from "./privatechat";
+import Online from "./onlineusers";
+import Logout from "./logout";
+import DeleteAccount from "./deleteaccount";
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first: '',
-            last: '',
-            biography: '',
-            url: '',
-            id: '',
+            first: "",
+            last: "",
+            biography: "",
+            url: "",
+            id: "",
             uploaderIsVisible: false,
             bioEditorIsVisible: false,
-            profilePic: '',
-            newBio: '',
-            bio: '',
+            profilePic: "",
+            newBio: "",
+            bio: "",
             success: false
         };
     }
 
     componentDidMount() {
-        // console.log("app component has mounted");
-        axios.get('/getloggeddata').then(res => {
-            console.log("resp in get data from user", res);
+        axios.get("/getloggeddata").then(res => {
             this.setState({
                 first: res.data.first,
                 last: res.data.last,
@@ -59,7 +57,7 @@ export default class App extends React.Component {
 
     toggleModalBio() {
         this.setState({
-            uploaderIsVisible: !this.state.bioEditorIsVisible,
+            uploaderIsVisible: !this.state.bioEditorIsVisible
         });
     }
 
@@ -71,7 +69,6 @@ export default class App extends React.Component {
     }
 
     closeModal(url) {
-        // console.log("url from function", this.props.url);
         this.setState({
             uploaderIsVisible: !this.state.uploaderIsVisible,
             url: url
@@ -84,15 +81,19 @@ export default class App extends React.Component {
                 <BrowserRouter>
                     <div className="profile">
                         <a className="logoref" href="https://swork-berlin.herokuapp.com/welcome#/">
-                            < img src="/Logo.png" className="logo" alt="logo" width="100px" height="100px" />
+                            <img src="/Logo.png" className="logo" alt="logo" width="100px" height="100px" />
                         </a>
                         <a className="linkprofile" href="https://swork-berlin.herokuapp.com/users">Find Friends</a>
                         <a className="linkprofile" href="https://swork-berlin.herokuapp.com/friends">My Friends</a>
                         <a className="linkprofile" href="https://swork-berlin.herokuapp.com/chat">Chat</a>
                         <a className="linkprofile" href="https://swork-berlin.herokuapp.com/online"> Online</a>
-                        <img onClick={() => this.toggleModal()} className="imgprofile" src={this.state.url} width="100px" height="100px" />
+                        <img onClick={() => this.toggleModal()}
+                            className="imgprofile"
+                            src={this.state.url}
+                            width="100px"
+                            height="100px" />
                     </div>
-                    <Route exact path="/" render={() => (
+                    <Route exact path="/" render={() =>
                         <div className="profile-page">
                             <Profile
                                 first={this.state.first}
@@ -115,15 +116,15 @@ export default class App extends React.Component {
                                 }
                             />
                         </div>
-                    )}
+                    }
                     />
-                    <Route path='/user/:id' component={OtherProfile} />
+                    <Route path="/user/:id" component={OtherProfile} />
                     {
                         this.state.uploaderIsVisible && <Uploader
                             closeModal={url => this.closeModal(url)}
                         />
                     }
-                    <Route path='/users' component={FindProfile} />
+                    <Route path="/users" component={FindProfile} />
                     <Route exact path="/friends" component={Friends} />
                     <Route exact path="/chat" component={Chat} />
                     <Route exact path="/privatechat" component={PrivateChat} />

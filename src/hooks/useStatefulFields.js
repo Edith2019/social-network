@@ -1,13 +1,8 @@
-
 // import React, { useState } from 'react';
-
-
-
 
 // export function useStateFields() {
 
 //     const [values, setValues] = useState({});
-
 
 //     const handleChange = e => {
 //         setValues({
@@ -18,7 +13,5 @@
 //     };
 
 //     return [values, handleChange];
-
-
 
 // }

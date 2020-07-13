@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { socket } from './socket';
-import { useSelector } from 'react-redux';
-
+import React, { useEffect, useRef } from "react";
+import { socket } from "./socket";
+import { useSelector } from "react-redux";
 
 export default function Chat() {
     const elemRef = useRef();
@@ -13,23 +12,15 @@ export default function Chat() {
         state => state.msg && state.msg
     );
 
-
-    //this will be undefined as the code is not written
+    // this will be undefined as the code is not written //
     useEffect(() => {
-        // console.log("hooks has mounted");
-        // console.log("scrollTop", elemRef.current.scrollTop);
-        // console.log("scrollheight", elemRef.current.scrollHeight);
-        // console.log("clientHeight", elemRef.current.clientHeight);
         elemRef.current.scrollTop = elemRef.current.scrollHeight - elemRef.current.clientHeight;
     }, [chatMessages]);
 
-
     const keyCheck = e => {
-
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
             e.preventDefault();
-            // console.log("our message", e.target.value);
-            socket.emit('chatMessage', e.target.value);// Emit msg to server chatmessage grabbing the input field
+            socket.emit("chatMessage", e.target.value);// Emit msg to server chatmessage grabbing the input field
             e.target.value = "";// re set he value to be empty field
         }
 
@@ -38,27 +29,27 @@ export default function Chat() {
     return (
         <React.Fragment>
             <div className="chat">
-                <h1 className='chatTitle'>Welcome to Chat</h1>
+                <h1 className="chatTitle">Welcome to Chat</h1>
                 <div className="Chatborder">
                     <div className="chatmessagesContainer" ref={elemRef}>
                         {chatMessages && chatMessages.map(chatMessages => {
-                            return (<div className="boxChat" key={chatMessages.id}>
+                            return <div className="boxChat" key={chatMessages.id}>
                                 <img className="imageChat" width="50px" height="50px" src={chatMessages.url_profile} />
                                 <div className="messageTitle">
                                     <p className="nameChat">{chatMessages.first} {chatMessages.last}</p>
                                     <p className="messageChat">{chatMessages.message}</p>
                                 </div>
-                            </div>);
+                            </div>;
 
                         })}
                         {chatMessage && chatMessage.map(chatMessage => {
-                            return (<div className="boxChat" key={chatMessage.id}>
+                            return <div className="boxChat" key={chatMessage.id}>
                                 <img className="imageChat" width="50px" height="50px" src={chatMessage.url_profile} />
                                 <div className="messageTitle">
                                     <p className="nameChat">{chatMessage.first} {chatMessage.last}</p>
                                     <p className="messageChat">{chatMessage.message}</p>
                                 </div>
-                            </div>);
+                            </div>;
                         })}
 
                     </div>

@@ -1,9 +1,9 @@
-import React from 'react';
-import axios from './axios'; //need to put the slash to use the copy
-import { Link } from 'react-router-dom';
+import React from "react";
+import axios from "./axios"; // need to put the slash to use the copy
+import { Link } from "react-router-dom";
 
 export default class Login extends React.Component {
-    constructor(props) { //props are all the data you want to apss props
+    constructor(props) { // props are all the data you want to apss props
         super(props); // add a property to the instence props
         this.state = {
             error: false
@@ -11,13 +11,13 @@ export default class Login extends React.Component {
     }
 
     submit() {
-        axios.post('/login', {
+        axios.post("/login", {
             email: this.state.email,
-            pw: this.state.pw,
+            pw: this.state.pw
         }).then(
             ({ data }) => {
                 if (data.success) {
-                    location.replace('/');
+                    location.replace("/");
                 } else {
                     this.setState({
                         error: true
@@ -26,7 +26,6 @@ export default class Login extends React.Component {
             }
         );
     }
-
 
     handleChange({ target }) {
         this.setState({
@@ -47,4 +46,4 @@ export default class Login extends React.Component {
         );
     }
 
-} 
+}

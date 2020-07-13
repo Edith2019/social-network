@@ -1,14 +1,11 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import axios from "./axios";
+import PropTypes from "prop-types";
 
 export default function DeleteAccount(props) {
-    // console.log("props in deleteaccount", props);
-    const [error, setError] = useState(false);
 
     const deleteAcc = () => {
-        // console.log("url in delete", props.url);
-        axios.post('/delete', { url: props.url }).then(() => {
-            // console.log("url in delete", props.url);
+        axios.post("/delete", { url: props.url }).then(() => {
             location.replace("/welcome#/");
         });
     };
@@ -19,3 +16,7 @@ export default function DeleteAccount(props) {
         </React.Fragment>
     );
 }
+
+DeleteAccount.propTypes = {
+    url: PropTypes.string
+};
